@@ -1,3 +1,4 @@
+import { useRef } from 'react';
 import CartPanel from './CartPanel.jsx';
 import styles from './Navbar.module.css';
 
@@ -10,8 +11,17 @@ export default function Navbar({
   onDecrease,
   onRemove,
   onClear,
+  onPay,
+  payment,
   onClose,
 }) {
+  const cartButtonRef = useRef(null);
+
+  const closeCart = () => {
+    onClose();
+    cartButtonRef.current?.focus();
+  };
+
   return (
     <nav className={styles.navbar}>
       {/* .brand y .brand-icon son globales: los comparte con Footer */}
@@ -33,6 +43,7 @@ export default function Navbar({
 
       <div className={styles.cartDropdown}>
         <button
+          ref={cartButtonRef}
           type="button"
           className={styles.cartLink}
           aria-label="Carrito de compras"
@@ -51,7 +62,9 @@ export default function Navbar({
             onDecrease={onDecrease}
             onRemove={onRemove}
             onClear={onClear}
-            onClose={onClose}
+            onPay={onPay}
+            payment={payment}
+            onClose={closeCart}
           />
         )}
       </div>

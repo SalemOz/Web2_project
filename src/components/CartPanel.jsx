@@ -1,7 +1,8 @@
 import { formatPrice } from '../data/menu.js';
+import PaymentConfirmation from './PaymentConfirmation.jsx';
 import styles from './CartPanel.module.css';
 
-export default function CartPanel({ items, onIncrease, onDecrease, onRemove, onClear, onClose }) {
+export default function CartPanel({ items, onIncrease, onDecrease, onRemove, onClear, onClose, onPay, payment }) {
   const total = items.reduce((sum, item) => sum + item.price * item.qty, 0);
 
   return (
@@ -13,7 +14,9 @@ export default function CartPanel({ items, onIncrease, onDecrease, onRemove, onC
         </button>
       </div>
 
-      {items.length === 0 ? (
+      {payment ? (
+        <PaymentConfirmation payment={payment} onClose={onClose} />
+      ) : items.length === 0 ? (
         <p className={styles.cartEmpty}>Tu carrito está vacío. ¡Agrega algo rico!</p>
       ) : (
         <>
@@ -64,6 +67,10 @@ export default function CartPanel({ items, onIncrease, onDecrease, onRemove, onC
               <span>Total</span>
               <strong>{formatPrice(total)}</strong>
             </div>
+            <button type="button" className={`btn-primary ${styles.cartPay}`} onClick={onPay}>
+              <span uk-icon="icon: credit-card" aria-hidden="true" />
+              Pagar
+            </button>
             <button type="button" className={styles.cartClear} onClick={onClear}>
               Vaciar carrito
             </button>

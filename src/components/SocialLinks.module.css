@@ -1,0 +1,25 @@
+.socialLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.socialLinks a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid #333;
+  border-radius: 50%;
+  color: var(--orange);
+  background: var(--card);
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.socialLinks a:hover {
+  border-color: var(--orange);
+  background: var(--orange);
+  color: var(--black);
+}

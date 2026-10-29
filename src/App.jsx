@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import Navbar from './components/Navbar.jsx';
 import Hero from './components/Hero.jsx';
 import Categories from './components/Categories.jsx';
-import Favorites from './components/Favorites.jsx';
 import Drinks from './components/Drinks.jsx';
 import Combos from './components/Combos.jsx';
 import Footer from './components/Footer.jsx';
@@ -10,6 +9,7 @@ import Footer from './components/Footer.jsx';
 export default function App() {
   const [cart, setCart] = useState([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
+  const [payment, setPayment] = useState(null);
 
   useEffect(() => {
     if (!isCartOpen) return undefined;
@@ -23,6 +23,7 @@ export default function App() {
   }, [isCartOpen]);
 
   const addToCart = (product) => {
+    setPayment(null);
     setCart((current) => {
       const exists = current.some((item) => item.id === product.id);
 
@@ -68,6 +69,17 @@ export default function App() {
 
   const clearCart = () => setCart([]);
 
+  const payCart = () => {
+    if (cart.length === 0) return;
+
+    // Compra de demostración: no se envían datos a una pasarela de pago.
+    setPayment({
+      total: cart.reduce((sum, item) => sum + item.price * item.qty, 0),
+      count: cart.reduce((sum, item) => sum + item.qty, 0),
+    });
+    setCart([]);
+  };
+
   const cartCount = cart.reduce((sum, item) => sum + item.qty, 0);
 
   return (
@@ -81,12 +93,13 @@ export default function App() {
         onDecrease={decreaseQty}
         onRemove={removeFromCart}
         onClear={clearCart}
+        onPay={payCart}
+        payment={payment}
         onClose={() => setIsCartOpen(false)}
       />
       <main>
         <Hero />
         <Categories />
-        <Favorites onAdd={addToCart} />
         <Drinks />
         <Combos onAdd={addToCart} />
       </main>

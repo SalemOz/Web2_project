@@ -1,4 +1,5 @@
 import styles from './Footer.module.css';
+import SocialLinks from './SocialLinks.jsx';
 
 export default function Footer() {
   return (
@@ -32,6 +33,7 @@ export default function Footer() {
           <p>Neiva, Huila, Colombia</p>
           <p>+57 300 123 4567</p>
           <p>@burgerzone.com</p>
+          <SocialLinks />
         </div>
       </div>
 

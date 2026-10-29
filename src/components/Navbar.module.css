@@ -1,0 +1,88 @@
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  min-height: 70px;
+  padding: 12px 5%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  background: rgba(12, 12, 12, 0.97);
+  border-bottom: 1px solid #292929;
+}
+
+.navLinks {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.navLinks a {
+  padding: 12px 0;
+  color: #eee;
+  font-size: 14px;
+  transition: color 0.2s;
+}
+
+.navLinks a:hover,
+.navLinks .active {
+  color: var(--orange);
+}
+
+.cartDropdown {
+  position: relative;
+}
+
+.cartLink {
+  position: relative;
+  padding: 8px;
+  font-size: 23px;
+  display: inline-flex;
+  align-items: center;
+  background: none;
+  border: 0;
+  color: inherit;
+  cursor: pointer;
+}
+
+.cartCount {
+  position: absolute;
+  top: 0;
+  right: -3px;
+  display: grid;
+  place-items: center;
+  width: 19px;
+  height: 19px;
+  border-radius: 50%;
+  background: var(--orange);
+  color: #111;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+@media (max-width: 900px) {
+  .navLinks {
+    gap: 14px;
+  }
+}
+
+@media (max-width: 600px) {
+  .navbar {
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 12px 5%;
+  }
+
+  .navLinks {
+    order: 3;
+    width: 100%;
+    overflow-x: auto;
+    gap: 22px;
+  }
+
+  .navLinks a {
+    flex-shrink: 0;
+    font-size: 12px;
+  }
+}

@@ -1,0 +1,36 @@
+import SectionHeading from './SectionHeading.jsx';
+import styles from './Categories.module.css';
+import { categories } from '../data/menu.js';
+
+export default function Categories() {
+  return (
+    <section className={styles.categoriesSection} id="menu">
+      <div className="container">
+        <SectionHeading
+          eyebrow="NUESTRAS CATEGORÍAS"
+          title="¿Qué se te antoja hoy?"
+        />
+
+        <div className={styles.categoryGrid}>
+          {categories.map((category) => (
+            <a
+              className={styles.categoryCard}
+              href="#favoritos"
+              key={category.name}
+            >
+              <img src={category.image} alt={category.name} />
+              <div className={styles.categoryInfo}>
+                <span className={styles.categoryIcon}>{category.icon}</span>
+                <div>
+                  <h3>{category.name}</h3>
+                  <p>{category.description}</p>
+                </div>
+                <span className={styles.roundArrow}>↗</span>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}

@@ -1,0 +1,13 @@
+.favoritesSection {
+  padding: 40px 0;
+  background: var(--black);
+}
+
+/* La rejilla .product-grid vive en styles/global.css porque la
+   comparte con la sección de combos. */
+
+@media (max-width: 600px) {
+  .favoritesSection {
+    padding: 30px 0;
+  }
+}

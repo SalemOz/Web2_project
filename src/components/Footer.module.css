@@ -1,0 +1,57 @@
+.footer {
+  padding-top: 35px;
+  background: #080808;
+  border-top: 2px solid #302116;
+}
+
+.footerGrid {
+  display: grid;
+  grid-template-columns: 1.3fr 0.7fr 1fr 1.4fr;
+  gap: 30px;
+  padding-bottom: 30px;
+}
+
+.footerGrid h3 {
+  margin: 0 0 12px;
+  color: var(--orange);
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.footerGrid p,
+.footerGrid > div > a {
+  display: block;
+  margin: 7px 0;
+  color: #c8c4be;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.footerGrid > div > a:hover {
+  color: var(--orange);
+}
+
+.copyright {
+  padding: 18px 5%;
+  border-top: 1px solid #333;
+  color: #aaa;
+  text-align: center;
+  font-size: 11px;
+}
+
+@media (max-width: 900px) {
+  .footerGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .footerGrid {
+    gap: 24px 15px;
+  }
+
+  /* .brand es global (la comparte con el navbar), por eso :global() */
+  .footerGrid :global(.brand) {
+    align-self: start;
+  }
+}

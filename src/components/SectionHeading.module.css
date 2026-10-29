@@ -1,0 +1,23 @@
+.sectionHeading {
+  margin-bottom: 22px;
+}
+
+.sectionHeading > span {
+  color: var(--orange);
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 1.1px;
+}
+
+.sectionHeading h2 {
+  margin: 5px 0 0;
+  color: #171717;
+  font-size: clamp(25px, 3vw, 34px);
+  line-height: 1.2;
+  font-weight: 850;
+  letter-spacing: -0.7px;
+}
+
+.headingLight h2 {
+  color: #f8f5ef;
+}
